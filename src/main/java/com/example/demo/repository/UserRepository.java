@@ -16,9 +16,10 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
     @Query(value = "select * from user where name = ?1",nativeQuery = true)
     UserEntity findByName(String name);
 
-//    @Modifying
-    @Query(value = "delete from user where name = ?1",nativeQuery = true)
-    int deleteByName(String name);
+    @Transactional
+    @Modifying
+    @Query(value = "delete from user where id = ?1",nativeQuery = true)
+    void deleteById(int userId);
 
     @Query(value = "select count(id) from user where name = ?1", nativeQuery = true)
     int countByName(String name);
@@ -30,4 +31,5 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
 
     @Query(value = "select telephone from user where name = ?1", nativeQuery = true)
     String findTelephoneByName(String name);
+
 }

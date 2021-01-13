@@ -14,10 +14,9 @@ public class MainService {
     @Resource
     private UserRepository userRepository;
 
-    public Iterable<UserEntity> getAllUsers()
+    public List<UserEntity> getAllUsers()
     {
-//        return userRepository.findByName("nol");
-        return null;
+        return userRepository.findAll();
     }
 
     public UserEntity findByName(String name)
@@ -43,8 +42,8 @@ public class MainService {
         return true;
     }
 
-    public boolean deleteByName(String name) {
-        return userRepository.deleteByName(name) != 0;
+    public void deleteById(int userId) {
+        userRepository.deleteById(userId);
     }
 
     public void save(UserEntity userEntity) {
