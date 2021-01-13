@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author nolzhou
@@ -14,5 +16,11 @@ public class AdminController {
     @GetMapping(path="/adminLogin")
     public String adminLogin(){
         return "adminLogin";
+    }
+
+    @PostMapping(path="/adminLogin")
+    public String processAdminLogin(@RequestParam(value = "adminName")String adminName,
+                                    @RequestParam(value = "password")String password){
+        return "";
     }
 }
